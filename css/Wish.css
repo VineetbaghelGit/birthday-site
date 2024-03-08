@@ -1,0 +1,185 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Josefin Slab", serif;
+}
+
+.card-container {
+  width: 100%;
+  height: 100vh;
+  background:linear-gradient( 0deg, rgb(20, 6, 6) -18.32%, rgba(20, 5, 5, 0.623) 49.9% ), url(https://img.freepik.com/free-photo/happy-birthday-with-realistic-balloons_24972-2211.jpg) center no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+
+  padding-left: 50px;
+  align-items: center;
+}
+
+.card {
+  width: 30%;
+  height: 70%;
+  position: relative;
+  left: 20;
+  /* justify-content: center; */
+
+  perspective: 1000px;
+}
+
+.side {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.left-side {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
+    url(../img/cardFront.jpg) center no-repeat;
+  background-size: cover;
+  background-position-x: 0;
+  width: 50%;
+  height: 100%;
+  transform: rotateY(0deg);
+  transform-origin: left;
+  transition: transform 2s;
+}
+
+.right-side {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
+    url(../img/cardFront.jpg) center no-repeat;
+  background-size: cover;
+  background-position-x: -180;
+  width: 50%;
+  height: 100%;
+  transform: rotateY(0deg);
+  transform-origin: right;
+  transition: transform 2s;
+}
+
+.back-side {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
+    url("../img/More/IMG_0941.jpg") center no-repeat;
+  background-size: cover;
+  box-shadow: 40px 40px 80px #000000;
+  z-index: -1;
+  transform: translateZ(-300px);
+  transition: z-index 0.4s step-end, transform 1s, box-shadow 1s;
+}
+
+.card:hover .left-side {
+  transform: rotateY(-360deg);
+}
+
+.card:hover .right-side {
+  transform: rotateY(360deg);
+}
+
+.card:hover .back-side {
+  transform: translateZ(0);
+  z-index: 1;
+  box-shadow: 50px 50px 100px #000000;
+}
+.back-side {
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  padding-left: 20px;
+}
+
+.name11 {
+  color: #ffffff;
+  font-size: 35px;
+  margin: 20px 5px;
+}
+
+.profession {
+  color: #eeeeee;
+  font-size: 25px;
+  margin: 20px 5px;
+}
+
+.left-side .name11,
+.left-side .profession {
+  text-align: right;
+}
+
+.biography {
+  color: #ffffff;
+  font-size: 13px;
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  /* font-family: "Dancing Script", cursive; */
+}
+.biography h6 {
+  text-align: center;
+  color: #daa520;
+}
+li {
+  list-style: none;
+  font-size: 1px;
+}
+.back {
+  -moz-box-shadow: -2px 10px 14px -7px #700940;
+  -webkit-box-shadow: -2px 10px 14px -7px #700940;
+  box-shadow: -2px 10px 14px -7px #700940;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0.05, goldenrod),
+    color-stop(1, goldenrod)
+  );
+  background: -moz-linear-gradient(center top, goldenrod 5%, goldenrod 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='goldenrod', endColorstr='goldenrod');
+  background-color: goldenrod;
+  -webkit-border-top-left-radius: 17px;
+  -moz-border-radius-topleft: 17px;
+  border-top-left-radius: 17px;
+  -webkit-border-top-right-radius: 17px;
+  -moz-border-radius-topright: 17px;
+  border-top-right-radius: 17px;
+  -webkit-border-bottom-right-radius: 17px;
+  -moz-border-radius-bottomright: 17px;
+  border-bottom-right-radius: 17px;
+  -webkit-border-bottom-left-radius: 17px;
+  -moz-border-radius-bottomleft: 17px;
+  border-bottom-left-radius: 17px;
+  text-indent: 0;
+  display: inline-block;
+  color: #ffffff;
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  font-style: normal;
+  height: 52px;
+  line-height: 1;
+  width: 142px;
+  font-size: 16px;
+  right: 43%;
+  position: absolute;
+  bottom: 3%;
+  text-decoration: none;
+  text-align: center;
+  text-shadow: -2px 1px 17px goldenrod;
+}
