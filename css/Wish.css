@@ -21,12 +21,11 @@ body {
 }
 
 .card {
-  width: 30%;
+  width: 45%;
   height: 70%;
   position: relative;
   left: 20;
   /* justify-content: center; */
-
   perspective: 1000px;
 }
 
@@ -123,7 +122,7 @@ body {
 
 .biography {
   color: #ffffff;
-  font-size: 13px;
+  font-size: 14px;
   background-color: rgba(0, 0, 0, 0.4);
   width: 100%;
   text-align: center;

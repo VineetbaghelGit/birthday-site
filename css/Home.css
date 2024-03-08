@@ -56,12 +56,17 @@ box-sizing: border-box;
 }
 
 .principal h1 {
-  font-size: 70px;
+  font-size: 100px;
   margin-bottom: 20px;
   font-family: "Dancing Script", cursive;
   color: #fff;
 }
-
+.owl-theme .owl-controls .owl-buttons div{
+  background-color: #DAA520 !important;
+  padding: 7px 19px !important;
+  opacity: 1 !important;
+  font-size: 20px !important;
+}
 /* Animation   */
 
 body {
@@ -308,7 +313,7 @@ h2.big-heading {
 }
 
 p.sub-heading {
-  font-size: 1.25em;
+  font-size: 2em;
   line-height: 1.625em;
   color: #daa520;
   font-family: "Raleway", sans-serif;
@@ -398,11 +403,10 @@ canvas {
 }
 .principal p {
   color: #553c02;
- 
-  
-  font-size: 60px;
+  font-size: 80px;
   font-weight: 700;
   color: white;
+  letter-spacing: 20px;
   text-shadow: 1px 1px 1px rgb(78, 58, 7), 1px 2px 1px goldenrod,
     1px 3px 1px goldenrod, 1px 4px 1px goldenrod, 1px 5px 1px goldenrod,
     1px 6px 1px goldenrod, 1px 7px 1px goldenrod, 1px 8px 1px goldenrod,
@@ -416,9 +420,24 @@ canvas {
   width: 100%;
 }
 .testimonial-item.equal-height.style-6 {
-  /* background-color: #eee; */
+  border: 2px solid #DAA520;
   border-radius: 10px;
   margin: 10px;
+  
+
+}
+.about-img img , .about-img video{
+
+  border: 2px solid #DAA520;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: inset rgba(218,165,32, 0.25) 0px 0px 55px 8px, inset rgba(218,165,32, 0.12) 0px 0px 30px 18px, inset rgba(218,165,32, 0.12) 0px 0px 11px 0px, inset rgba(218,165,32, 0.17) 0px 0px 13px 10px, inset rgba(218,165,32, 0.09) 0px 0px 20px 14px
+
+}
+.testimonial-item.equal-height.style-6 img {
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: inset rgba(218,165,32, 0.25) 0px 0px 55px 8px, inset rgba(218,165,32, 0.12) 0px 0px 30px 18px, inset rgba(218,165,32, 0.12) 0px 0px 11px 0px, inset rgba(218,165,32, 0.17) 0px 0px 13px 10px, inset rgba(218,165,32, 0.09) 0px 0px 20px 14px
 }
 .cell-right {
   text-align: center;

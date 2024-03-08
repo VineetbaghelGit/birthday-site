@@ -58,7 +58,7 @@
 </head>
 <body style="background-color:#1c1b19;">
   <!-- slider -->
-  <!-- <canvas id="fireworksCanvas"></canvas> -->
+  <!-- <canvas id="canvas"></canvas> -->
   <!-- navbar -->
   <navbar id="title">
     <nav class="navbar navbar-dark navbar-inverse fixed-top">
@@ -91,7 +91,7 @@
   <section id="About-You">
     <div class="container-fluid">
       <div class="row p-0 m-0">
-        <div class="col-md-12 text-center" >
+        <div class="col-md-12 text-center about-img" >
           <h2 class="big-heading mt-0 mt-0"> <span class="custom-color">Happy birthday to my amazing sister! 🎉🎂 
           </span></h2>
           <img class="headline_1 mt-4" src="img/IMG_9720.jpg" width="50%">
@@ -101,7 +101,17 @@
     
     </div>
   </section>
-
+         <section>
+          <div class="row display: flex; justify-content: center;">
+          <div class="offset-md-2 col-md-8 about-img">
+          <video poster="https://img.freepik.com/free-photo/happy-birthday-with-realistic-balloons_24972-2211.jpg"
+           width="100%" height="80%" controls>
+            <source src="img/video.mp4" type="video/mp4">
+            <source src="img/video.mp4" type="video/ogg">
+          </video>
+        </div>
+      </div>
+         </section>
   <!-- Animation section  -->
  <div class="animation-img">
   <div class="wrapper">
@@ -135,7 +145,7 @@
 
   <section style="padding-top: 100px;">
     <div class="row p-0 m-0">
-      <div class="col-lg-6 d-flex align-items-center justify-content-center">
+      <div class="col-lg-6 d-flex align-items-center justify-content-center about-img">
         <!-- <div class=""> -->
           <img class="" src="img/IMG_9722.jpg" width="60%" alt="work"> 
         <!-- </div> /       -->
@@ -183,44 +193,44 @@
       <div class="col-md-12">
         <div id="testimonial-slider" class="owl-carousel">
           <!--  ////////////////////////////////////////////////////////  -->
-          <div class="testimonial-item equal-height style-6" style="height: 400px;">
+          <div class="testimonial-item equal-height style-6">
               <img src="img/banner-img.jpeg" alt="Rose">
           </div>
           <!--  ////////////////////////////////////////////////////////  -->
-          <div class="testimonial-item equal-height style-6" style="height: 400px;">
+          <div class="testimonial-item equal-height style-6">
             <img src="img/More/IMG_1637.jpg" alt="Rose">
         </div>
           <!--  ////////////////////////////////////////////////////////  -->
-          <div class="testimonial-item equal-height style-6" style="height: 400px;">
+          <div class="testimonial-item equal-height style-6">
             <img src="img/More/IMG_1641.jpg" alt="Rose">
         </div>
           <!--  ////////////////////////////////////////////////////////  -->
-          <div class="testimonial-item equal-height style-6" style="height: 400px;">
+          <div class="testimonial-item equal-height style-6">
             <img src="img/More/IMG_4917.jpg" alt="Rose">
         </div>
           <!--  ////////////////////////////////////////////////////////  -->
-          <div class="testimonial-item equal-height style-6" style="height: 400px;">
+          <div class="testimonial-item equal-height style-6">
             <img src="img/More/IMG_6007.JPG" alt="Rose">
         </div>
           <!--  ////////////////////////////////////////////////////////  -->
-          <div class="testimonial-item equal-height style-6" style="height: 400px;">
+          <div class="testimonial-item equal-height style-6">
             <img src="img/More/IMG_6046.jpg" alt="Rose">
         </div>
           <!--  ////////////////////////////////////////////////////////  -->
-          <div class="testimonial-item equal-height style-6" style="height: 400px;">
+          <div class="testimonial-item equal-height style-6">
             <img src="img/More/IMG_9875.jpg" alt="Rose">
         </div>
-        <div class="testimonial-item equal-height style-6" style="height: 400px;">
+        <div class="testimonial-item equal-height style-6">
           <img src="img/More/IMG_9730.jpg" alt="Rose">
       </div>
-      <div class="testimonial-item equal-height style-6" style="height: 400px;">
+      <div class="testimonial-item equal-height style-6">
         <img src="img/More/IMG_8829.jpg" alt="Rose">
     </div>
-    <div class="testimonial-item equal-height style-6" style="height: 400px;">
+    <div class="testimonial-item equal-height style-6">
       <img src="img/More/IMG_0647.jpg" alt="Rose">
   </div>
-  <div class="testimonial-item equal-height style-6" style="height: 400px;">
-    <img src="img/More/IMG_9736.jpg" alt="Rose">
+  <div class="testimonial-item equal-height style-6">
+    <img src="img/IMG_9736.jpg" alt="Rose">
 </div>
           <!--  ////////////////////////////////////////////////////////  -->
         </div>
@@ -238,7 +248,7 @@
               <h1>With all our love and best wishes🌸</h1>
             </div>
           </div>
-          <div class="col-md-6  d-flex justify-content-center align-items-center">
+          <div class="col-md-6  d-flex justify-content-center align-items-center about-img">
             <!-- <div class=""> -->
               <img src="img/More/526282CE-B32F-424E-A1E8-58431DB8C261.jpg" class="footer-img responsive" alt="footer-image">
             <!-- </div> -->
@@ -286,126 +296,140 @@
       </div>
       
       <script>
-       const canvas = document.getElementById("fireworksCanvas");
-const ctx = canvas.getContext("2d");
+       window.addEventListener("resize", resizeCanvas, false);
+window.addEventListener("DOMContentLoaded", onLoad, false);
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+window.requestAnimationFrame =
+  window.requestAnimationFrame ||
+  window.webkitRequestAnimationFrame ||
+  window.mozRequestAnimationFrame ||
+  window.oRequestAnimationFrame ||
+  window.msRequestAnimationFrame ||
+  function (callback) {
+    window.setTimeout(callback, 1000 / 60);
+  };
+
+var canvas,
+  ctx,
+  w,
+  h,
+  particles = [],
+  probability = 0.04,
+  xPoint,
+  yPoint;
+
+function onLoad() {
+  canvas = document.getElementById("canvas");
+  ctx = canvas.getContext("2d");
+  resizeCanvas();
+
+  window.requestAnimationFrame(updateWorld);
+}
 
 function resizeCanvas() {
-	canvas.width = window.innerWidth;
-	canvas.height = window.innerHeight;
+  if (!!canvas) {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+  }
 }
 
-window.addEventListener("resize", resizeCanvas, false);
-
-class Firework {
-	constructor() {
-		this.x = Math.random() * canvas.width;
-		this.y = canvas.height;
-		this.sx = Math.random() * 3 - 1.5;
-		this.sy = Math.random() * -3 - 3;
-		this.size = Math.random() * 2 + 1;
-		this.shouldExplode = false;
-
-		const colorVal = Math.round(0xffffff * Math.random());
-		const r = colorVal >> 16;
-		const g = (colorVal >> 8) & 255;
-		const b = colorVal & 255;
-		this.r = r;
-		this.g = g;
-		this.b = b;
-	}
-
-	update() {
-		if (this.sy >= -2 || this.y <= 100 || this.x <= 0 || this.x >= canvas.width) {
-			this.shouldExplode = true;
-		} else {
-			this.sy += 0.01;
-		}
-		this.x += this.sx;
-		this.y += this.sy;
-	}
-
-	draw() {
-		ctx.fillStyle = `rgb(${this.r},${this.g},${this.b})`;
-		ctx.beginPath();
-		ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-		ctx.fill();
-	}
+function updateWorld() {
+  update();
+  paint();
+  window.requestAnimationFrame(updateWorld);
 }
 
-class Particle {
-	constructor(x, y, r, g, b) {
-		this.x = x;
-		this.y = y;
-		this.sx = Math.random() * 3 - 1.5;
-		this.sy = Math.random() * 3 - 1.5;
-		this.size = Math.random() * 2 + 1;
-		this.life = 100;
-		this.r = r;
-		this.g = g;
-		this.b = b;
-	}
-
-	update() {
-		this.x += this.sx;
-		this.y += this.sy;
-		this.life -= 1;
-	}
-
-	draw() {
-		ctx.fillStyle = `rgba(${this.r}, ${this.g}, ${this.b}, ${this.life / 100})`;
-		ctx.beginPath();
-		ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-		ctx.fill();
-	}
+function update() {
+  if (particles.length < 500 && Math.random() < probability) {
+    createFirework();
+  }
+  var alive = [];
+  for (var i = 0; i < particles.length; i++) {
+    if (particles[i].move()) {
+      alive.push(particles[i]);
+    }
+  }
+  particles = alive;
 }
 
-const fireworks = [new Firework()];
-const particles = [];
-
-function animate() {
-	ctx.fillStyle = "rgba(0, 0, 0,.1)";
-	ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-	if (Math.random() < 0.05) {
-		fireworks.push(new Firework());
-	}
-
-	for (let i = fireworks.length - 1; i >= 0; i--) {
-		fireworks[i].update();
-		fireworks[i].draw();
-
-		if (fireworks[i].shouldExplode) {
-			for (let j = 0; j < 50; j++) {
-				particles.push(
-					new Particle(
-						fireworks[i].x,
-						fireworks[i].y,
-						fireworks[i].r,
-						fireworks[i].g,
-						fireworks[i].b
-					)
-				);
-			}
-			fireworks.splice(i, 1);
-		}
-	}
-
-	for (let i = particles.length - 1; i >= 0; i--) {
-		particles[i].update();
-		particles[i].draw();
-
-		if (particles[i].life <= 0) {
-			particles.splice(i, 1);
-		}
-	}
-	requestAnimationFrame(animate);
+function paint() {
+  ctx.globalCompositeOperation = "source-over";
+  ctx.fillStyle = "rgba(0,0,0,0.2)";
+  ctx.fillRect(0, 0, w, h);
+  ctx.globalCompositeOperation = "lighter";
+  for (var i = 0; i < particles.length; i++) {
+    particles[i].draw(ctx);
+  }
 }
 
-animate();
+function createFirework() {
+  xPoint = Math.random() * (w - 200) + 100;
+  yPoint = Math.random() * (h - 200) + 100;
+  var nFire = Math.random() * 50 + 100;
+  var c =
+    "rgb(" +
+    ~~(Math.random() * 200 + 55) +
+    "," +
+    ~~(Math.random() * 200 + 55) +
+    "," +
+    ~~(Math.random() * 200 + 55) +
+    ")";
+  for (var i = 0; i < nFire; i++) {
+    var particle = new Particle();
+    particle.color = c;
+    var vy = Math.sqrt(25 - particle.vx * particle.vx);
+    if (Math.abs(particle.vy) > vy) {
+      particle.vy = particle.vy > 0 ? vy : -vy;
+    }
+    particles.push(particle);
+  }
+}
 
+function Particle() {
+  this.w = this.h = Math.random() * 4 + 1;
+
+  this.x = xPoint - this.w / 2;
+  this.y = yPoint - this.h / 2;
+
+  this.vx = (Math.random() - 0.5) * 10;
+  this.vy = (Math.random() - 0.5) * 10;
+
+  this.alpha = Math.random() * 0.5 + 0.5;
+
+  this.color;
+}
+
+Particle.prototype = {
+  gravity: 0.05,
+  move: function () {
+    this.x += this.vx;
+    this.vy += this.gravity;
+    this.y += this.vy;
+    this.alpha -= 0.01;
+    if (
+      this.x <= -this.w ||
+      this.x >= screen.width ||
+      this.y >= screen.height ||
+      this.alpha <= 0
+    ) {
+      return false;
+    }
+    return true;
+  },
+  draw: function (c) {
+    c.save();
+    c.beginPath();
+
+    c.translate(this.x + this.w / 2, this.y + this.h / 2);
+    c.arc(0, 0, this.w, 0, Math.PI * 2);
+    c.fillStyle = this.color;
+    c.globalAlpha = this.alpha;
+
+    c.closePath();
+    c.fill();
+    c.restore();
+  }
+};
 
       </script>
       <script>
